@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (response.ok) {
           alert(`Student ${studentIdParam ? 'updated' : 'added'} successfully`);
   
-          // ✅ Redirect after success
           window.location.href = '/HTML/studentdetail.html';
         } else {
           const errorText = await response.text();

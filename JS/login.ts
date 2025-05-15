@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('isLoggedIn', 'true'); // store login status
 
                 // ✅ Redirect after login
-                window.location.href = '/Frontend/HTML/studentdetail.html';
+                window.location.href = '/HTML/studentdetail.html';
             } else {
                 alert('Invalid credentials');
             }
