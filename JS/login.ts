@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = (document.getElementById('username') as HTMLInputElement).value;
         const password = (document.getElementById('password') as HTMLInputElement).value;
 
+
         try {
             const response = await fetch('https://student-management-1-xok5.onrender.com/login', {
                 method: 'POST',
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('isLoggedIn', 'true'); // store login status
 
                 // ✅ Redirect after login
-                window.location.href = '/HTML/studentdetail.html';
+                window.location.href = '/Frontend/HTML/studentdetail.html';
             } else {
                 alert('Invalid credentials');
             }

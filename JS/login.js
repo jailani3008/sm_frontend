@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     localStorage.setItem('token', data.token); // store token
                     localStorage.setItem('isLoggedIn', 'true'); // store login status
                     // ✅ Redirect after login
-                    window.location.href = '/HTML/studentdetail.html';
+                    window.location.href = '/Frontend/HTML/studentdetail.html';
                     return [3 /*break*/, 5];
                 case 4:
                     alert('Invalid credentials');
