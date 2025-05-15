@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         accountContainer.classList.add('flipped');
         setTimeout(() => {
-            window.location.href = "/Frontend/HTML/register.html";
+            window.location.href = "/HTML/register.html";
         }, 800);
     });
 

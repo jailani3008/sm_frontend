@@ -1,5 +1,5 @@
 if (!localStorage.getItem("isLoggedIn")) {
-  window.location.href = "/Frontend/HTML/login.html";
+  window.location.href = "/HTML/login.html";
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

@@ -1,5 +1,5 @@
 if (!localStorage.getItem("isLoggedIn")) {
-  window.location.replace("/Frontend/HTML/login.html");
+  window.location.replace("/HTML/login.html");
 }
 
 interface Student {

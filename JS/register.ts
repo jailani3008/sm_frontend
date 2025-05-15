@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         accountContainer.classList.add('flipped');
         setTimeout(() => {
-            window.location.href = "/Frontend/HTML/login.html";
+            window.location.href = "/HTML/login.html";
         }, 800);
     });
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 alert('User registered successfully');
-                window.location.href = "/Frontend/HTML/login.html";
+                window.location.href = "/HTML/login.html";
             } else {
                 const error = await response.text();
                 alert('Registration failed: ' + error);
