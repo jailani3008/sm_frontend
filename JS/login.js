@@ -35,55 +35,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-document.addEventListener('DOMContentLoaded', function () {
-    var accountContainer = document.getElementById('accountContainer');
-    var flipToLogin = document.getElementById('flipToLogin');
-    flipToLogin.addEventListener('click', function (e) {
-        e.preventDefault();
-        accountContainer.classList.add('flipped');
-        setTimeout(function () {
-            window.location.href = "/HTML/register.html";
-        }, 800);
+document.addEventListener('submit', function (e) { return __awaiter(_this, void 0, void 0, function () {
+    var username, password, response, data, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                e.preventDefault();
+                username = document.getElementById('username').value;
+                password = document.getElementById('password').value;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 4, , 5]);
+                return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username: username, password: password })
+                    })];
+            case 2:
+                response = _a.sent();
+                return [4 /*yield*/, response.json()];
+            case 3:
+                data = _a.sent();
+                if (!response.ok) {
+                    // Show actual error message from backend
+                    alert(data.error || 'Login failed');
+                    return [2 /*return*/];
+                }
+                localStorage.setItem('token', data.token);
+                window.location.href = '/studentdetail.html';
+                return [3 /*break*/, 5];
+            case 4:
+                error_1 = _a.sent();
+                console.error('Network error:', error_1);
+                alert('Cannot connect to server. Please try again later.');
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
     });
-    var loginForm = document.getElementById('loginForm');
-    loginForm.addEventListener('submit', function (e) { return __awaiter(_this, void 0, void 0, function () {
-        var username, password, response, data, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    e.preventDefault();
-                    username = document.getElementById('username').value;
-                    password = document.getElementById('password').value;
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 6, , 7]);
-                    return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/login', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ username: username, password: password })
-                        })];
-                case 2:
-                    response = _a.sent();
-                    if (!response.ok) return [3 /*break*/, 4];
-                    return [4 /*yield*/, response.json()];
-                case 3:
-                    data = _a.sent();
-                    localStorage.setItem('token', data.token); // store token
-                    localStorage.setItem('isLoggedIn', 'true'); // store login status
-                    // ✅ Redirect after login
-                    window.location.href = '/Frontend/HTML/studentdetail.html';
-                    return [3 /*break*/, 5];
-                case 4:
-                    alert('Invalid credentials');
-                    _a.label = 5;
-                case 5: return [3 /*break*/, 7];
-                case 6:
-                    error_1 = _a.sent();
-                    console.error('Error during login:', error_1);
-                    alert('An error occurred during login');
-                    return [3 /*break*/, 7];
-                case 7: return [2 /*return*/];
-            }
-        });
-    }); });
-});
+}); });
