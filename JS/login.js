@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 document.addEventListener('submit', function (e) { return __awaiter(_this, void 0, void 0, function () {
-    var username, password, response, data, error_1;
+    var username, password, response, contentType, text, data, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -45,31 +45,40 @@ document.addEventListener('submit', function (e) { return __awaiter(_this, void 
                 password = document.getElementById('password').value;
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 4, , 5]);
+                _a.trys.push([1, 6, , 7]);
                 return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/login', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json' // Explicitly expect JSON
+                        },
                         body: JSON.stringify({ username: username, password: password })
                     })];
             case 2:
                 response = _a.sent();
-                return [4 /*yield*/, response.json()];
+                contentType = response.headers.get('content-type');
+                if (!(!contentType || !contentType.includes('application/json'))) return [3 /*break*/, 4];
+                return [4 /*yield*/, response.text()];
             case 3:
+                text = _a.sent();
+                throw new Error(text || 'Invalid server response');
+            case 4: return [4 /*yield*/, response.json()];
+            case 5:
                 data = _a.sent();
                 if (!response.ok) {
                     // Show actual error message from backend
-                    alert(data.error || 'Login failed');
-                    return [2 /*return*/];
+                    throw new Error(data.error || 'Login failed');
                 }
                 localStorage.setItem('token', data.token);
-                window.location.href = '/studentdetail.html';
-                return [3 /*break*/, 5];
-            case 4:
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = '/HTML/studentdetail.html';
+                return [3 /*break*/, 7];
+            case 6:
                 error_1 = _a.sent();
-                console.error('Network error:', error_1);
-                alert('Cannot connect to server. Please try again later.');
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                console.error('Login error:', error_1);
+                alert(error_1.message || 'Login failed. Please try again.');
+                return [3 /*break*/, 7];
+            case 7: return [2 /*return*/];
         }
     });
 }); });
