@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                 tbody = document.getElementById('marksTableBody');
                 form = document.getElementById('marksForm');
                 overallAverageEl = document.getElementById('overallAverage');
-                return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/api/getStudents')];
+                return [4 /*yield*/, fetch('http://localhost:3000/api/getStudents')];
             case 1:
                 res = _a.sent();
                 return [4 /*yield*/, res.json()];
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                                     row = rows_1[_i];
                                     _loop_1(row);
                                 }
-                                return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/api/marks', {
+                                return [4 /*yield*/, fetch('http://localhost:3000/api/marks', {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({ records: marksData }),

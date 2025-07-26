@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                                 _a.label = 1;
                             case 1:
                                 _a.trys.push([1, 7, , 8]);
-                                return [4 /*yield*/, fetch("https://student-management-1-xok5.onrender.com/api/deleteStudent/".concat(studentId), {
+                                return [4 /*yield*/, fetch("http://localhost:3000/api/deleteStudent/".concat(studentId), {
                                         method: 'DELETE'
                                     })];
                             case 2:
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                     students.forEach(function (student, index) {
                         var _a, _b;
                         var row = document.createElement('tr');
-                        row.innerHTML = "\n          <td>".concat(index + 1, "</td>\n          <td>").concat(student.studentid, "</td>\n          <td>").concat(student.name, "</td>\n          <td>").concat(student.class, "</td>\n          <td>").concat(student.email, "</td>\n          <td>\n            <button class=\"edit-btn\" data-id=\"").concat(student.studentid, "\">Edit</button>\n            <button class=\"delete-btn\" data-id=\"").concat(student.studentid, "\">Delete</button>\n          </td>\n        ");
+                        row.innerHTML = "\n        <td>".concat(index + 1, "</td>\n        <td>").concat(student.studentid, "</td>\n        <td>").concat(student.name, "</td>\n        <td>").concat(student.class, "</td>\n        <td>").concat(student.email, "</td>\n        <td>\n          <button class=\"edit-btn\" data-id=\"").concat(student.studentid, "\">Edit</button>\n          <button class=\"delete-btn\" data-id=\"").concat(student.studentid, "\">Delete</button>\n        </td>\n      ");
                         studentTableBody.appendChild(row);
                         (_a = row.querySelector('.edit-btn')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
                             handleEditStudent(student.studentid);
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                         switch (_a.label) {
                             case 0:
                                 _a.trys.push([0, 5, , 6]);
-                                return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/api/getStudents')];
+                                return [4 /*yield*/, fetch('http://localhost:3000/api/getStudents')];
                             case 1:
                                 response = _a.sent();
                                 if (!response.ok) return [3 /*break*/, 3];

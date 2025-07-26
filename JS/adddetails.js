@@ -48,11 +48,13 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                 nameInput = document.getElementById('name');
                 classInput = document.getElementById('class');
                 emailInput = document.getElementById('email');
+                if (!form || !studentIdInput || !nameInput || !classInput || !emailInput)
+                    return [2 /*return*/];
                 if (!studentIdParam) return [3 /*break*/, 7];
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 6, , 7]);
-                return [4 /*yield*/, fetch("https://student-management-1-xok5.onrender.com/api/getStudents/".concat(studentIdParam))];
+                return [4 /*yield*/, fetch("http://localhost:3000/api/getStudents/".concat(studentIdParam))];
             case 2:
                 response = _a.sent();
                 if (!response.ok) return [3 /*break*/, 4];
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                 nameInput.value = student.name;
                 classInput.value = student.class;
                 emailInput.value = student.email;
-                studentIdInput.disabled = true; // Make student ID read-only
+                studentIdInput.disabled = true;
                 return [3 /*break*/, 5];
             case 4:
                 alert('Student not found');
@@ -71,15 +73,13 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
             case 5: return [3 /*break*/, 7];
             case 6:
                 error_1 = _a.sent();
-                console.error('Error fetching student details:', error_1);
                 alert('Error loading student data');
                 return [3 /*break*/, 7];
             case 7:
-                // Submit form
                 form.addEventListener('submit', function (e) { return __awaiter(_this, void 0, void 0, function () {
-                    var data, apiUrl, method, response, errorText, error_2;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
+                    var data, apiUrl, method, response, errorText, _a;
+                    return __generator(this, function (_b) {
+                        switch (_b.label) {
                             case 0:
                                 e.preventDefault();
                                 data = {
@@ -89,32 +89,31 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                                     email: emailInput.value
                                 };
                                 apiUrl = studentIdParam
-                                    ? "https://student-management-1-xok5.onrender.com/api/students/".concat(studentIdParam) // PUT
-                                    : 'https://student-management-1-xok5.onrender.com/api/addStudent';
+                                    ? "http://localhost:3000/api/students/".concat(studentIdParam)
+                                    : 'http://localhost:3000/api/addStudent';
                                 method = studentIdParam ? 'PUT' : 'POST';
-                                _a.label = 1;
+                                _b.label = 1;
                             case 1:
-                                _a.trys.push([1, 6, , 7]);
+                                _b.trys.push([1, 6, , 7]);
                                 return [4 /*yield*/, fetch(apiUrl, {
                                         method: method,
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify(data)
                                     })];
                             case 2:
-                                response = _a.sent();
+                                response = _b.sent();
                                 if (!response.ok) return [3 /*break*/, 3];
                                 alert("Student ".concat(studentIdParam ? 'updated' : 'added', " successfully"));
-                                window.location.href = '/HTML/studentdetail.html';
+                                window.location.href = 'studentdetail.html';
                                 return [3 /*break*/, 5];
                             case 3: return [4 /*yield*/, response.text()];
                             case 4:
-                                errorText = _a.sent();
+                                errorText = _b.sent();
                                 alert("Failed to ".concat(studentIdParam ? 'update' : 'add', " student:\n").concat(errorText));
-                                _a.label = 5;
+                                _b.label = 5;
                             case 5: return [3 /*break*/, 7];
                             case 6:
-                                error_2 = _a.sent();
-                                console.error("".concat(method, " Error:"), error_2);
+                                _a = _b.sent();
                                 alert("Error ".concat(studentIdParam ? 'updating' : 'adding', " student"));
                                 return [3 /*break*/, 7];
                             case 7: return [2 /*return*/];

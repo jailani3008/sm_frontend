@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     average: number;
   };
 
-  const res = await fetch('https://student-management-1-xok5.onrender.com/api/getStudents');
+  // FETCH from local backend!
+  const res = await fetch('http://localhost:3000/api/getStudents');
   const students = await res.json();
 
   students.forEach((student: any) => {
@@ -65,7 +66,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       avgCell.textContent = average.toFixed(2); // show individual average
     }
 
-    const response = await fetch('https://student-management-1-xok5.onrender.com/api/marks', {
+    // POST to local backend!
+    const response = await fetch('http://localhost:3000/api/marks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ records: marksData }),

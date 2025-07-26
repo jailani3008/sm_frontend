@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 4, , 5]);
-                return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/api/getStudents')];
+                return [4 /*yield*/, fetch('http://localhost:3000/api/getStudents')];
             case 2:
                 response = _a.sent();
                 return [4 /*yield*/, response.json()];
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                 students = _a.sent();
                 students.forEach(function (student, index) {
                     var row = document.createElement('tr');
-                    row.innerHTML = "\n          <td>".concat(index + 1, "</td>\n          <td>").concat(student.name, "</td>\n          <td>\n            <input type=\"radio\" name=\"attendance-").concat(student.studentid, "\" value=\"Present\" class=\"present\" required>\n          </td>\n          <td>\n            <input type=\"radio\" name=\"attendance-").concat(student.studentid, "\" value=\"Absent\" class=\"absent\" required>\n          </td>\n        ");
+                    row.innerHTML = "\n        <td>".concat(index + 1, "</td>\n        <td>").concat(student.name, "</td>\n        <td>\n          <input type=\"radio\" name=\"attendance-").concat(student.studentid, "\" value=\"Present\" class=\"present\" required>\n        </td>\n        <td>\n          <input type=\"radio\" name=\"attendance-").concat(student.studentid, "\" value=\"Absent\" class=\"absent\" required>\n        </td>\n      ");
                     row.setAttribute('data-id', student.studentid);
                     tbody.appendChild(row);
                 });
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(_th
                                 _a.label = 1;
                             case 1:
                                 _a.trys.push([1, 6, , 7]);
-                                return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/api/attendance', {
+                                return [4 /*yield*/, fetch('http://localhost:3000/api/attendance', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json'

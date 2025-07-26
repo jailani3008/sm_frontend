@@ -44,7 +44,7 @@ function fetchLatestAttendanceSummary() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("https://student-management-1-xok5.onrender.com/latest-attendance-summary")];
+                    return [4 /*yield*/, fetch("http://localhost:3000/latest-attendance-summary")];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];

@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         accountContainer.classList.add('flipped');
         setTimeout(function () {
-            window.location.href = "/HTML/login.html";
+            window.location.href = "/Frontend/HTML/login.html";
         }, 800);
     });
     var registerForm = document.getElementById('registerForm');
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 6, , 7]);
-                    return [4 /*yield*/, fetch('https://student-management-1-xok5.onrender.com/register', {
+                    return [4 /*yield*/, fetch('http://localhost:3000/register', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ username: username, password: password })
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     response = _a.sent();
                     if (!response.ok) return [3 /*break*/, 3];
                     alert('User registered successfully');
-                    window.location.href = "/HTML/login.html";
+                    window.location.href = "/Frontend/HTML/login.html";
                     return [3 /*break*/, 5];
                 case 3: return [4 /*yield*/, response.text()];
                 case 4:

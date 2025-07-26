@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         accountContainer.classList.add('flipped');
         setTimeout(() => {
-            window.location.href = "/HTML/login.html";
+            window.location.href = "/Frontend/HTML/login.html";
         }, 800);
     });
 
@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('https://student-management-1-xok5.onrender.com/register', {
+            // Changed URL to local
+            const response = await fetch('http://localhost:3000/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 alert('User registered successfully');
-                window.location.href = "/HTML/login.html";
+                window.location.href = "/Frontend/HTML/login.html";
             } else {
                 const error = await response.text();
                 alert('Registration failed: ' + error);
